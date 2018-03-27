@@ -8,7 +8,7 @@ library("readr")
 tbl=read.csv("eddypro.csv", skip = 1, na =c("","NA","-9999","-9999.0"), comment=c("[")) 
 tbl=tbl[-1,] 
 tbl 
-tbl=tbl[tbl$DOY > 152 & tbl$DOY < 244,] 
+tbl=tbl[tbl$DOY > 62 & tbl$DOY < 156,] 
 tbl=tbl[tbl$daytime == FALSE,] 
 glimpse(tbl) 
 tbl = select(tbl, -(roll)) 
@@ -63,7 +63,7 @@ mod3=lm(formula2, data = tbl)
 anova(mod3)
 summary(mod3)
 formula3 = as.formula(paste("h2o_flux ~  H + LE + un_LE + 
-   un_h2o_flux"))
+    un_h2o_flux"))
 mod4=lm(formula3, data = tbl)
 anova(mod4)
 summary(mod4)
