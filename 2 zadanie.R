@@ -1,3 +1,6 @@
+setwd("D:/Joulia/YandexDisk/J_R-Projects/MathMod/MathMod")
+
+
 library("tidyverse") 
 library("nycflights13") 
 library("tidyr") 
@@ -68,8 +71,11 @@ mod4=lm(formula3, data = tbl)
 anova(mod4)
 summary(mod4)
 #взаимодействия переменных
-mod5 = lm(h2o_flux ~ (h2o_flux ~  H + LE + un_LE + 
-                        un_h2o_flux) ^2, data = tbl)
+mod5 = lm(h2o_flux ~ (H + LE) ^2 - H:un_h2o_flux - LE:un_LE - LE:un_h2o_flux - un_LE, data = tbl)
 mod5
 anova(mod5)
 summary(mod5)
+mod6 = lm(h2o_flux ~ (H + LE) - H:un_h2o_flux - LE:un_LE - LE:un_h2o_flux - H:LE - un_LE, data = tbl)
+mod6
+anova(mod6)
+summary(mod6)
